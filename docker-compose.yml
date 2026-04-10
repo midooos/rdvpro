@@ -1,0 +1,78 @@
+version: '3.9'
+
+services:
+
+  # ── PostgreSQL ──────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: rdvpro_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER:     rdvpro
+      POSTGRES_PASSWORD: rdvpro_dev_pass
+      POSTGRES_DB:       rdvpro
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      # Auto-run all SQL files in /docker-entrypoint-initdb.d on first start
+      - ./database/migrations/001_initial_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+      - ./database/migrations/002_add_constraints_and_preferences.sql:/docker-entrypoint-initdb.d/02_constraints.sql
+      - ./database/migrations/003_views.sql:/docker-entrypoint-initdb.d/03_views.sql
+      - ./database/seeds/001_demo_data.sql:/docker-entrypoint-initdb.d/04_seed.sql
+      - ./database/seeds/002_demo_data_enriched.sql:/docker-entrypoint-initdb.d/05_seed_enriched.sql
+    ports:
+      - "5433:5432"   # 5433 on host to avoid conflict with your installed PostgreSQL
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rdvpro"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Flask Backend ───────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: rdvpro_backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL:        postgresql://rdvpro:rdvpro_dev_pass@postgres:5432/rdvpro
+      SECRET_KEY:          rdvpro-dev-secret-change-in-prod
+      JWT_SECRET_KEY:      rdvpro-jwt-secret-change-in-prod
+      FLASK_DEBUG:         "1"
+      CORS_ORIGINS:        http://localhost:3000
+      FRONTEND_URL:        http://localhost:3000
+      MAIL_SERVER:         smtp.gmail.com
+      MAIL_PORT:           "587"
+      MAIL_USERNAME:       ""
+      MAIL_PASSWORD:       ""
+      MAIL_DEFAULT_SENDER: noreply@rdvpro.tn
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/uploads:/app/uploads
+    ports:
+      - "5000:5000"
+    command: python src/app.py
+
+  # ── React Frontend ──────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rdvpro_frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      REACT_APP_API_URL: http://localhost:5000/api
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+    ports:
+      - "3000:3000"
+    stdin_open: true
+
+volumes:
+  postgres_data:

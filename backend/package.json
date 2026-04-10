@@ -1,0 +1,11 @@
+{
+  "name": "rdvpro-backend",
+  "version": "1.0.0",
+  "description": "RDVPro — Flask API Backend (Python). See backend/README.md for setup.",
+  "scripts": {
+    "note": "Backend is Python/Flask. Run: pip install -r requirements.txt && python src/app.py"
+  },
+  "engines": {
+    "python": ">=3.11"
+  }
+}

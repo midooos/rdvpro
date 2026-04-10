@@ -1,0 +1,19 @@
+{
+  "name": "rdvpro",
+  "version": "1.0.0",
+  "description": "RDVPro - Appointment Management Application",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm start --workspace=frontend\" \"python backend/src/app.py\"",
+    "dev:frontend": "npm start --workspace=frontend",
+    "dev:backend": "python backend/src/app.py",
+    "build": "npm run build --workspace=frontend",
+    "test": "npm run test --workspace=frontend"
+  },
+  "workspaces": [
+    "frontend"
+  ],
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

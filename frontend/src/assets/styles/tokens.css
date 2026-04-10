@@ -1,0 +1,83 @@
+/* ─── RDVPro Design Tokens ──────────────────────────────────────────────── */
+/* Extracted from official mockup — single source of truth for all styling  */
+
+:root {
+  /* ── Brand Colors ── */
+  --navy:     #0B1437;
+  --navy-2:   #112050;
+  --navy-3:   #1A3070;
+  --blue:     #1E6FD9;
+  --blue-lt:  #4D94FF;
+  --teal:     #0DBAAB;
+  --amber:    #F5A623;
+  --red:      #E5474B;
+  --green:    #27C47A;
+  --purple:   #7C5CBF;
+  --white:    #FFFFFF;
+
+  /* ── Neutrals ── */
+  --off:      #F4F6FB;
+  --gray-1:   #E8ECF5;
+  --gray-2:   #C5CEDF;
+  --gray-3:   #8896AD;
+  --gray-4:   #5A6880;
+  --text:     #1A2540;
+  --text-2:   #3D4F6B;
+
+  /* ── Typography ── */
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --text-xs:   11px;
+  --text-sm:   12px;
+  --text-base: 14px;
+  --text-md:   16px;
+  --text-lg:   18px;
+  --text-xl:   22px;
+  --text-2xl:  28px;
+  --text-3xl:  36px;
+
+  /* ── Spacing ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+
+  /* ── Border Radius ── */
+  --radius-sm: 6px;
+  --radius:    12px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm:  0 1px 4px rgba(11, 20, 55, 0.08);
+  --shadow-md:  0 4px 20px rgba(11, 20, 55, 0.12);
+  --shadow-lg:  0 12px 40px rgba(11, 20, 55, 0.18);
+  --shadow-xl:  0 32px 80px rgba(0, 0, 0, 0.5);
+
+  /* ── Transitions ── */
+  --transition-fast: 0.15s ease;
+  --transition:      0.2s ease;
+  --transition-slow: 0.35s ease;
+
+  /* ── Z-index scale ── */
+  --z-base:    1;
+  --z-dropdown: 100;
+  --z-sticky:  200;
+  --z-modal:   500;
+  --z-toast:   900;
+  --z-nav:     9999;
+
+  /* ── Layout ── */
+  --sidebar-width: 260px;
+  --header-height: 64px;
+  --container-max: 1280px;
+}
