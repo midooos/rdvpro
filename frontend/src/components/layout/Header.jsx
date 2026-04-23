@@ -199,7 +199,7 @@ export default function Header({ role, onMenuClick }) {
             zIndex: 'var(--z-dropdown)',
           }}>
             {[
-              { label: '👤 Mon profil', to: role === 'admin' ? '/admin/settings' : '/profile' },
+              { label: '👤 Mon profil', to: role === 'admin' ? '/admin/profile' : '/profile' },
               { label: '⚙️ Paramètres', to: role === 'admin' ? '/admin/settings' : '/profile' },
             ].map(item => (
               <Link

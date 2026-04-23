@@ -65,11 +65,13 @@ export default function RegisterPage() {
       <div style={styles.card}>
         {/* Header */}
         <div style={styles.cardHeader}>
-          <Link to="/login" style={styles.back}>← Retour</Link>
-          <div style={styles.logo}>
-            <div style={styles.logoIcon}>📆</div>
-            <span style={styles.logoName}>RDVPro</span>
-          </div>
+          <Link to="/" style={styles.back}>← Accueil</Link>
+          <Link to="/" style={{ textDecoration: 'none', cursor: 'pointer' }}>
+            <div style={styles.logo}>
+              <div style={styles.logoIcon}>📆</div>
+              <span style={styles.logoName}>RDVPro</span>
+            </div>
+          </Link>
         </div>
 
         <h1 style={styles.title}>Créer un compte</h1>

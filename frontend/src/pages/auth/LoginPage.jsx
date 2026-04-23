@@ -36,13 +36,15 @@ export default function LoginPage() {
       <div style={styles.grid}>
         {/* ── LEFT: Brand panel ── */}
         <div style={styles.brand}>
-          <div style={styles.brandLogo}>
-            <div style={styles.brandIcon}>📆</div>
-            <div>
-              <div style={styles.brandName}>RDVPro</div>
-              <div style={styles.brandTagline}>GESTION DE RENDEZ-VOUS</div>
+          <Link to="/" style={{ textDecoration: 'none', cursor: 'pointer' }}>
+            <div style={styles.brandLogo}>
+              <div style={styles.brandIcon}>📆</div>
+              <div>
+                <div style={styles.brandName}>RDVPro</div>
+                <div style={styles.brandTagline}>GESTION DE RENDEZ-VOUS</div>
+              </div>
             </div>
-          </div>
+          </Link>
 
           <div style={styles.heroText}>
             <h2 style={styles.heroH2}>

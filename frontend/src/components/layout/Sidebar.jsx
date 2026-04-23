@@ -20,6 +20,7 @@ const ADMIN_NAV = [
   { to: '/admin/users',             icon: '🔑', label: 'Utilisateurs'    },
   { to: '/admin/reports',           icon: '📈', label: 'Rapports'        },
   { to: '/admin/settings',          icon: '⚙️', label: 'Paramètres'     },
+  { to: '/admin/profile',           icon: '👤', label: 'Mon profil'      },
 ];
 
 export default function Sidebar({ role, open, onClose }) {

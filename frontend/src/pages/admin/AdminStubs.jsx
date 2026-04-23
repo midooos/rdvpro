@@ -28,20 +28,12 @@ function StubPage({ icon, title, description, links = [] }) {
   );
 }
 
-export function AdminClients() {
-  return <StubPage icon="👥" title="Clients" description="Gestion de la base de clients." links={[{ to: '/admin', label: '← Tableau de bord' }]} />;
-}
-
 export function AdminSlots() {
   return <StubPage icon="🕐" title="Créneaux" description="Gestion des disponibilités et des plages horaires." links={[{ to: '/admin', label: '← Tableau de bord' }]} />;
-}
-
-export function AdminReports() {
-  return <StubPage icon="📈" title="Rapports & Analytiques" description="Rapports IA et analyses des tendances de rendez-vous." links={[{ to: '/admin', label: '← Tableau de bord' }]} />;
 }
 
 export function AdminSettings() {
   return <StubPage icon="⚙️" title="Paramètres" description="Configuration du système et préférences globales." links={[{ to: '/admin', label: '← Tableau de bord' }]} />;
 }
 
-export default AdminClients;
+export default AdminSlots;

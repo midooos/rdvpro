@@ -5,6 +5,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AuthLayout from '../components/layout/AuthLayout';
 import DashboardLayout from '../components/layout/DashboardLayout';
 
+// Public pages
+import HomePage from '../pages/public/HomePage';
+
 // Auth pages
 import LoginPage from '../pages/auth/LoginPage';
 import RegisterPage from '../pages/auth/RegisterPage';
@@ -21,7 +24,10 @@ import ClientNotifications from '../pages/client/ClientNotifications';
 // Admin pages
 import AdminDashboard from '../pages/admin/AdminDashboard';
 import AdminAppointments from '../pages/admin/AdminAppointments';
-import { AdminClients, AdminSlots, AdminSettings, AdminReports } from '../pages/admin/AdminStubs';
+import AdminProfile from '../pages/admin/AdminProfile';
+import AdminReports from '../pages/admin/AdminReports';
+import AdminClients from '../pages/admin/AdminClients';
+import { AdminSlots, AdminSettings } from '../pages/admin/AdminStubs';
 import AdminNotifications from '../pages/admin/AdminNotifications';
 import AdminUsers from '../pages/admin/AdminUsers';
 
@@ -32,6 +38,9 @@ import AdminRoute from './AdminRoute';
 export default function AppRoutes() {
   return (
     <Routes>
+      {/* Home page */}
+      <Route path="/" element={<HomePage />} />
+
       {/* Auth routes */}
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<LoginPage />} />
@@ -59,11 +68,11 @@ export default function AppRoutes() {
         <Route path="/admin/users" element={<AdminUsers />} />
         <Route path="/admin/reports" element={<AdminReports />} />
         <Route path="/admin/settings" element={<AdminSettings />} />
+        <Route path="/admin/profile" element={<AdminProfile />} />
       </Route>
 
-      {/* Default redirect */}
-      <Route path="/" element={<Navigate to="/login" replace />} />
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      {/* Default redirect for not found */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
